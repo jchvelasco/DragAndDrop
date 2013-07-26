@@ -4,24 +4,26 @@ colorBox = {
         maxheight: 200,
         minwidth: 30,
         minheight: 30,
-        playfieldW: 800,
-        playfieldH: 600
+        playfieldTop: undefined,
+        playfieldLeft: undefined,
+        playfieldRight: undefined,
+        playfieldBottom: undefined
     },
-    createBoxes: function (name) {
+    createBoxes: function (count) {
         var boxContainer = document.getElementById('playfield'),
             frag = document.createDocumentFragment(),
             divs,
             el,
             id = "colorbox";
-        for (var i = 0; i < name; i++) {
+        for (var i = 0; i < count; i++) {
             divs = document.createElement('div');
             divs.className = id + (i + 1) + ' box';
             divs.setAttribute("style",
-                "width: " + colorBox.randomWidth() + "px; " +
-                "height: " + colorBox.randomHeight() + "px; " +
                 "background-color: " + colorBox.randomHex() + "; " +
-                "top: " + colorBox.randomPosY() + "px; " +
-                "left: " + colorBox.randomPosX() + "px;"
+                "width: " + colorBox.randomWidth() + "px; " +
+                "height: " + colorBox.randomHeight() + "px; "// +
+                //"top: " + colorBox.randomPosY() + "px; " +
+                //"left: " + colorBox.randomPosX() + "px;"
                 );
             frag.appendChild(divs);
             boxContainer.appendChild(frag);
