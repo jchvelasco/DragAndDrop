@@ -1,25 +1,52 @@
-
-
 colorBox = {
     conf: {
         maxwidth: 200,
         maxheight: 200,
         minwidth: 30,
-        minheight: 30
+        minheight: 30,
+        playfieldW: 800,
+        playfieldH: 600
     },
     createBoxes: function (name) {
         var boxContainer = document.getElementById('playfield'),
             frag = document.createDocumentFragment(),
             divs,
+            el,
             id = "colorbox";
         for (var i = 0; i < name; i++) {
             divs = document.createElement('div');
-            divs.setAttribute("id", id + (i+1));
+            divs.className = id + (i + 1) + ' box';
+            divs.setAttribute("style",
+                "width: " + colorBox.randomWidth() + "px; " +
+                "height: " + colorBox.randomHeight() + "px; " +
+                "background-color: " + colorBox.randomHex() + "; " +
+                "top: " + colorBox.randomPosY() + "px; " +
+                "left: " + colorBox.randomPosX() + "px;"
+                );
             frag.appendChild(divs);
             boxContainer.appendChild(frag);
         }
     },
-    test: function () {
-        
+    randomWidth: function () {
+        return Math.floor(Math.random() * (colorBox.conf.maxwidth - colorBox.conf.minwidth + 1) + colorBox.conf.minwidth + 1);
+    },
+    randomHeight: function () {
+        return Math.floor(Math.random() * (colorBox.conf.maxheight - colorBox.conf.minheight + 1) + colorBox.conf.minheight + 1);
+    },
+    randomHex: function () {
+        var letters = "0123456789ABCDEF".split(''),
+            color = "#";
+
+        for (var i = 0; i < 6; i++ ) {
+            color += letters[Math.floor(Math.random() * 15)];
+        }
+
+        return color;
+    },
+    randomPosY: function () {
+        return Math.floor(Math.random() * (colorBox.conf.playfieldH - colorBox.conf.maxheight));
+    },
+    randomPosX: function () {
+        return Math.floor(Math.random() * (colorBox.conf.playfieldW - colorBox.conf.maxwidth));
     }
 };
