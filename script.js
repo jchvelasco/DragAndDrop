@@ -22,8 +22,8 @@ colorBox = {
                 "background-color: " + colorBox.randomHex() + "; " +
                 "width: " + colorBox.randomWidth() + "px; " +
                 "height: " + colorBox.randomHeight() + "px; "// +
-                //"top: " + colorBox.randomPosY() + "px; " +
-                //"left: " + colorBox.randomPosX() + "px;"
+                "top: " + colorBox.randomPosY() + "px; " +
+                "left: " + colorBox.randomPosX() + "px;"
                 );
             frag.appendChild(divs);
             boxContainer.appendChild(frag);
