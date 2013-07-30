@@ -1,0 +1,18 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#playfield {
+    margin: 0 auto;
+    width: 800px;
+    height: 600px;
+    border: 1px solid black;
+    background-color: #fff;
+    position: relative;
+}
+
+.colorbox1, .colorbox2, .colorbox3, .colorbox4, .colorbox5,
+.colorbox6, .colorbox7, .colorbox8, .colorbox9, .colorbox10 {
+    position: absolute;
+}
