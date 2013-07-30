@@ -4,10 +4,8 @@ colorBox = {
         maxheight: 200,
         minwidth: 30,
         minheight: 30,
-        playfieldTop: undefined,
-        playfieldLeft: undefined,
-        playfieldRight: undefined,
-        playfieldBottom: undefined
+        playfieldH: 600,
+        playfieldW: 800
     },
     createBoxes: function (count) {
         var boxContainer = document.getElementById('playfield'),
@@ -21,7 +19,7 @@ colorBox = {
             divs.setAttribute("style",
                 "background-color: " + colorBox.randomHex() + "; " +
                 "width: " + colorBox.randomWidth() + "px; " +
-                "height: " + colorBox.randomHeight() + "px; "// +
+                "height: " + colorBox.randomHeight() + "px; " +
                 "top: " + colorBox.randomPosY() + "px; " +
                 "left: " + colorBox.randomPosX() + "px;"
                 );
