@@ -12,7 +12,11 @@ body {
     position: relative;
 }
 
+<<<<<<< HEAD
 .colorbox1, .colorbox2, .colorbox3, .colorbox4, .colorbox5,
 .colorbox6, .colorbox7, .colorbox8, .colorbox9, .colorbox10 {
+=======
+.box {
+>>>>>>> b0de7ac6c67b33ace126eaae33808a36c370516e
     position: absolute;
 }
