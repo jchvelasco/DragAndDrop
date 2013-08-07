@@ -21,6 +21,7 @@ colorBox = {
             divs.className = 'box';
             divs.setAttribute("style",
                 "background-color: " + colorBox.randomHex() + "; " +
+                "z-index:" + "1; " +
                 "width: " + colorBox.randomWidth() + "px; " +
                 "height: " + colorBox.randomHeight() + "px; " +
                 "top: " + colorBox.randomPosY() + "px; " +
@@ -31,7 +32,7 @@ colorBox = {
         }
         var elements = document.getElementsByTagName('div');
         for(var x=0; x < elements.length; x++) {
-            var el = elements[x];
+            el = elements[x];
             for (var y in el) {
                 if (y == 'className') {
                     if(el[y] == 'box') {
@@ -65,7 +66,7 @@ colorBox = {
     },
     dragBox: function (elems) {
         function fixPageXY(e) {
-            if (e.pageX == null && e.clientX != null ) { 
+            if (e.pageX == null && e.clientX != null ) {
                 var html = document.documentElement;
                 var body = document.body;
 
@@ -84,21 +85,39 @@ colorBox = {
                 getWidth = styleWidth.replace('px', ''),
                 getHeight = styleHeight.replace('px', ''),
                 w = getWidth / 2,
-                h = getHeight / 2;
+                h = getHeight / 2,
+                highZ = colorBox.getZIndex();
+            this.style.zIndex = parseInt(highZ) + 1;
             document.onmousemove = function(e) {
                 e = e || event;
                 fixPageXY(e);
                 console.log(e.pageX);
                 self.style.left = e.pageX-w+'px';
                 self.style.top = e.pageY-h+'px';
+                if(e.pageX + parseInt(w) > colorBox.conf.playfieldW || e.pageY + parseInt(h) > colorBox.conf.playfieldH) {
+                    this.onmousemove = null;
+                    colorBox.dragBox.onmousedown = null;
+                    e.preventDefault();
+                }
             };
             this.onmouseup = function () {
                 document.onmousemove = null;
             };
         };
-        elems.ondragstart = function () {
-            return false;
-        };
-
+         elems.ondragstart = function () {
+             return false;
+         };
+    },
+    getZIndex: function () {
+        var highest = 0,
+            zIndex,
+            indices = document.getElementsByTagName('div');
+        for (var z = 0; z < indices.length; z++) {
+            zIndex = indices[z].style.zIndex;
+            if(zIndex > highest) {
+                highest = zIndex;
+            }
+        }
+        return highest;
     }
 };
