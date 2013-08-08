@@ -78,7 +78,6 @@ colorBox = {
             }
         }
         elems.onmousedown = function () {
-            elems.style.position = 'absolute';
             var self = this,
                 styleHeight = elems.style.height,
                 styleWidth = elems.style.width,
@@ -87,6 +86,7 @@ colorBox = {
                 w = getWidth / 2,
                 h = getHeight / 2,
                 highZ = colorBox.getZIndex();
+            elems.style.position = 'absolute';
             this.style.zIndex = parseInt(highZ) + 1;
             document.onmousemove = function(e) {
                 e = e || event;
@@ -104,9 +104,9 @@ colorBox = {
                 document.onmousemove = null;
             };
         };
-         elems.ondragstart = function () {
+        elems.ondragstart = function () {
              return false;
-         };
+        };
     },
     getZIndex: function () {
         var highest = 0,
