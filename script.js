@@ -1,16 +1,15 @@
 colorBox = {
+    // initial config
     conf: {
         maxwidth: 200,
         maxheight: 200,
         minwidth: 30,
         minheight: 30,
         playfieldH: 600,
-        playfieldW: 800,
-        boxes: undefined,
-        randW: undefined,
-        randH: undefined
+        playfieldW: 800
     },
     createBoxes: function (count) {
+        // box generator
         var boxContainer = document.getElementById('playfield'),
             frag = document.createDocumentFragment(),
             divs,
@@ -62,14 +61,12 @@ colorBox = {
     },
     randomPosX: function () {
         return Math.floor(Math.random() * (colorBox.conf.playfieldW - colorBox.conf.maxwidth));
-
     },
     dragBox: function (elems) {
         function fixPageXY(e) {
             if (e.pageX == null && e.clientX != null ) {
                 var html = document.documentElement;
                 var body = document.body;
-
                 e.pageX = e.clientX + (html.scrollLeft || body && body.scrollLeft || 0);
                 e.pageX -= html.clientLeft || 0;
 
@@ -109,6 +106,7 @@ colorBox = {
         };
     },
     getZIndex: function () {
+        // loop thru the elements and return the highest z-index
         var highest = 0,
             zIndex,
             indices = document.getElementsByTagName('div');
