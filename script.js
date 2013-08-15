@@ -63,7 +63,7 @@ colorBox = {
     },
     dragBox: function (elems) {
         function fixPageXY(e) {
-            if (e.pageX == null && e.clientX != null ) { 
+            if (e.pageX == null && e.clientX != null ) {
                 var html = document.documentElement;
                 var body = document.body;
 
