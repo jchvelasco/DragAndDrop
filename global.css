@@ -1,0 +1,14 @@
+dt {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+dd p{
+    margin-bottom: 15px;
+}
+
+.container {
+    width: auto;
+    max-width: 680px;
+    padding: 0 15px;
+}
